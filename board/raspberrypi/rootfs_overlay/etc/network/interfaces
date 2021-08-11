@@ -1,4 +1,17 @@
+auto lo
+auto ap0
 auto wlan0
-iface wlan0 inet static
-    address 10.33.40.1
+
+iface lo inet loopback
+
+allow-hotplug ap0
+iface ap0 inet static
+    address 192.168.200.1
     netmask 255.255.255.0
+    hostapd /etc/hostapd/hostapd.conf
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface AP1 inet dhcp
+iface AP2 inet dhcp
