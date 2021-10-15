@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Copyright (C) 2014 by Thomas Petazzoni <thomas.petazzoni@free-electrons.com>
 #
@@ -17,8 +17,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 # This script generates a random configuration for testing Buildroot.
-
-from __future__ import print_function
 
 import contextlib
 import csv
@@ -357,6 +355,8 @@ def gen_config(args):
     # Amend the configuration with a few things.
     if randint(0, 20) == 0:
         configlines.append("BR2_ENABLE_DEBUG=y\n")
+    if randint(0, 20) == 0:
+        configlines.append("BR2_ENABLE_RUNTIME_DEBUG=y\n")
     if randint(0, 1) == 0:
         configlines.append("BR2_INIT_BUSYBOX=y\n")
     elif randint(0, 15) == 0:
